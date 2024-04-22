@@ -1,13 +1,17 @@
+:root {
+    --blue: #3e95ff;
+}
+
 body {
     display: flex;
     flex-direction: column;
     gap: 32px;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
-h1 {
-    text-align: center;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
 }
 
 table {
@@ -38,16 +42,79 @@ td {
 button {
     padding: 8px 16px;
     border: none;
-    border-radius: 8pc;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-blue {
     color: white;
-    background-color: cornflowerblue;
+    background-color: var(--blue);
+}
+
+#btn-new-book {
     width: fit-content;
     height: fit-content;
 }
 
-body div {
+body > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+dialog {
+    padding: 32px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+}
+
+dialog form {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+form > div div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+form > div div:last-child {
+    justify-content: left;
+    gap: 8px;
+}
+
+form > div:last-child {
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+}
+
+form > div:last-child button {
+    width: 50%;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid lightgrey;
+    min-width: 300px;
+}
+
+input[type="checkbox"] {
+    padding: 0;
+    margin: 0;
 }
