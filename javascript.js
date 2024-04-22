@@ -1,10 +1,29 @@
 const myLibrary = [];
+
 const libraryTableBody = document.querySelector("#library");
 const dialog = document.querySelector("dialog");
+const form = document.querySelector("form");
 const buttonNewBook = document.querySelector("#btn-new-book");
+const buttonCancel = document.querySelector("#cancel");
+const buttonSave = document.querySelector("#save");
 
 buttonNewBook.addEventListener("click", () => {
+    form.reset();
     dialog.showModal();
+});
+
+buttonCancel.addEventListener("click", () => {
+    dialog.close();
+});
+
+buttonSave.addEventListener("click", (event) => {
+    event.preventDefault();
+    const book = new Book(title.value, author.value, pages.value);
+        read.checked ? book.read = "Read" : book.read = "Not Read";
+    addBookToLibrary(book);
+    const bookAsArray = [book];
+    displayBooksInLibrary(bookAsArray);
+    dialog.close();
 });
 
 function Book(title, author, pages, read) {
