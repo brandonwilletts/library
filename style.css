@@ -3,6 +3,10 @@
     --darkblue: #2a89fe;
     --grey: #ebebeb;
     --darkgrey: #e0e0e0;
+    --red: #ff8787;
+    --darkred: #ff7878;
+    --green: #c6ffc6;
+    --darkgreen: #b3fbb3;
 }
 
 body {
@@ -69,6 +73,29 @@ button:hover {
 
 .btn-grey:hover {
     background-color: var(--darkgrey);
+}
+
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 8pt;
+}
+
+.btn-red {
+    background-color: var(--red);
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: var(--darkred);
+}
+
+.btn-green {
+    background-color: var(--green);
+    color: black;
+}
+
+.btn-green:hover {
+    background-color: var(--darkgreen);
 }
 
 #btn-new-book {
