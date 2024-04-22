@@ -45,7 +45,7 @@ addBookToLibrary(theGreatGatsby);
 const warAndPeace = new Book("War and Peace", "Leo Tolstoy", 1652, "not read yet");
 addBookToLibrary(warAndPeace);
 
-const wiseguy = new Book("Wisegyt", "Nicolas Pileggi", 424, "read");
+const wiseguy = new Book("Wiseguy", "Nicolas Pileggi", 424, "read");
 addBookToLibrary(wiseguy);
 
 displayBooksInLibrary(myLibrary);

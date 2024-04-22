@@ -1,6 +1,11 @@
-* {
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     font-family: Arial, Helvetica, sans-serif;
+
 }
+
 h1 {
     text-align: center;
 }
@@ -9,15 +14,9 @@ table {
     width: 100vw;
     font-size: 12pt;
     border: none;
-    margin: 0;
     border-collapse: collapse;
     text-align: left;
     table-layout: fixed;
-}
-
-caption {
-    font-size: 10pt;
-    margin-bottom: 16px;
 }
 
 th {
@@ -34,4 +33,21 @@ td {
     margin: 0px;
     padding: 6px;
     font-size: 10pt;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8pc;
+    color: white;
+    background-color: cornflowerblue;
+    width: fit-content;
+    height: fit-content;
+}
+
+body div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
