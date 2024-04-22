@@ -1,5 +1,11 @@
 const myLibrary = [];
 const libraryTableBody = document.querySelector("#library");
+const dialog = document.querySelector("dialog");
+const buttonNewBook = document.querySelector("#btn-new-book");
+
+buttonNewBook.addEventListener("click", () => {
+    dialog.showModal();
+});
 
 function Book(title, author, pages, read) {
     this.title = title;
