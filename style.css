@@ -7,6 +7,8 @@
     --darkred: #ff7878;
     --green: #c6ffc6;
     --darkgreen: #b3fbb3;
+    --yellow: #fff5c6;
+    --darkyellow: #faecc0;
 }
 
 body {
@@ -96,6 +98,15 @@ button:hover {
 
 .btn-green:hover {
     background-color: var(--darkgreen);
+}
+
+.btn-yellow {
+    background-color: var(--yellow);
+    color: black;
+}
+
+.btn-yellow:hover {
+    background-color: var(--darkyellow);
 }
 
 #btn-new-book {
