@@ -55,7 +55,7 @@ function displayBookInTable(book) {
     const pages = document.createElement("td");
         pages.textContent = book.pages;
     const read = document.createElement("td");
-        read.textContent = book.read;
+        (book.read) ? read.textContent = "Read" : read.textContent = "Not Read";    
     const action = document.createElement("td");
     const buttonDiv = document.createElement("div");
         buttonDiv.style.cssText = "display: flex; gap: 8px; flex-wrap: wrap;";
@@ -68,13 +68,10 @@ function displayBookInTable(book) {
         })
     const toggleReadButton = document.createElement("button");
         toggleReadButton.setAttribute("data-key", book.key);
-        if ( book.read === true) {
-            toggleReadButton.textContent = "Mark as Unread"
-            toggleReadButton.classList = "btn-yellow btn-sm btn-toggle";
-        } else {
-            toggleReadButton.textContent = "Mark as Read"
-            toggleReadButton.classList = "btn-green btn-sm btn-toggle";
-        }
+        updateToggleButtonColor(book, toggleReadButton);
+        toggleReadButton.addEventListener("click", () => {
+            toggleReadAndUnread(book.key, read);
+        })
         
     libraryTable.appendChild(tableRow);
         tableRow.appendChild(title);
@@ -90,6 +87,29 @@ function displayBookInTable(book) {
 function removeBookFromTable(bookKey) {
     const rowToRemove = document.querySelector(`tr[data-key='${bookKey}']`);
     rowToRemove.remove();
+}
+
+function toggleReadAndUnread(bookKey, td) {
+    const toggleReadButton = document.querySelector(`.btn-toggle[data-key='${bookKey}']`);
+    const book = myLibrary[myLibrary.findIndex(book => book.key == bookKey)];
+    if (book.read) {
+        book.read = false;
+        td.textContent = "Not Read";
+    } else {
+        book.read = true;
+        td.textContent = "Read";
+    }
+    updateToggleButtonColor(book, toggleReadButton);
+}
+
+function updateToggleButtonColor(book, button) {
+    if (book.read) {
+        button.textContent = "Mark as Unread"
+        button.classList = "btn-yellow btn-sm btn-toggle";
+    } else {
+        button.textContent = "Mark as Read"
+        button.classList = "btn-green btn-sm btn-toggle";
+    }
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
