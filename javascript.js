@@ -6,11 +6,12 @@ const buttonNewBook = document.querySelector("#btn-new-book");
 const buttonCancel = document.querySelector("#cancel");
 const form = document.querySelector("form");
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, key) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.key = Math.floor(Math.random() * 100000);
     this.info = function() {
         return `${title} by ${author}, ${pages} pages, ${read}`
     }
@@ -38,13 +39,15 @@ function addBookToMyLibrary(book) {
     displayBookInTable(book);
 }
 
-function removeBookFromMyLibrary(book) {
-    myLibrary.splice(book.indexOf(), 1);
-    removeBookFromTable(book);
+function removeBookFromMyLibrary(bookKey) {
+    const bookIndex = myLibrary.findIndex(book => book.key == bookKey);
+    myLibrary.splice(bookIndex, 1);
+    removeBookFromTable(bookKey);
 }
 
 function displayBookInTable(book) {
     const tableRow = document.createElement("tr");
+        tableRow.setAttribute("data-key", book.key);  
     const title = document.createElement("td");
         title.textContent = book.title;
     const author = document.createElement("td");
@@ -59,7 +62,12 @@ function displayBookInTable(book) {
     const removeButton = document.createElement("button");
         removeButton.classList = "btn-red btn-sm btn-remove";
         removeButton.textContent = "Remove";
+        removeButton.setAttribute("data-key", book.key);
+        removeButton.addEventListener("click", () => {
+            removeBookFromMyLibrary(book.key);
+        })
     const toggleReadButton = document.createElement("button");
+        toggleReadButton.setAttribute("data-key", book.key);
         if ( book.read === true) {
             toggleReadButton.textContent = "Mark as Unread"
             toggleReadButton.classList = "btn-yellow btn-sm btn-toggle";
@@ -76,20 +84,13 @@ function displayBookInTable(book) {
         tableRow.appendChild(action);
             action.appendChild(buttonDiv);
                 buttonDiv.appendChild(removeButton);
-                buttonDiv.appendChild(toggleReadButton);
+                buttonDiv.appendChild(toggleReadButton);  
 }
 
-function removeBookFromTable(book) {
-    const rowToRemove = document.querySelector(`tr[index='${book.indexOf()}']`);
+function removeBookFromTable(bookKey) {
+    const rowToRemove = document.querySelector(`tr[data-key='${bookKey}']`);
     rowToRemove.remove();
 }
-
-//     const buttonsRemove = document.querySelectorAll(".btn-remove");
-//     buttonsRemove.forEach((button) => {
-//     button.addEventListener("click", () => {
-//     removeBookFromMyLibrary(button.getAttribute("index"));
-//     })
-//     })
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 addBookToMyLibrary(theHobbit);
@@ -102,5 +103,3 @@ addBookToMyLibrary(warAndPeace);
 
 const wiseguy = new Book("Wiseguy", "Nicolas Pileggi", 424, false);
 addBookToMyLibrary(wiseguy);
-
-//displayBooksInLibrary(myLibrary);
