@@ -28,8 +28,7 @@ buttonCancel.addEventListener("click", () => {
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const book = new Book(title.value, author.value, pages.value);
-        read.checked ? book.read = "Read" : book.read = "Not Read";
+    const book = new Book(title.value, author.value, pages.value, read.checked);
     addBookToMyLibrary(book);
     dialog.close();
 });
