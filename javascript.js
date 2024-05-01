@@ -6,14 +6,27 @@ const buttonNewBook = document.querySelector("#btn-new-book");
 const buttonCancel = document.querySelector("#cancel");
 const form = document.querySelector("form");
 
-function Book(title, author, pages, read, key) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.key = Math.floor(Math.random() * 100000);
-    this.info = function() {
-        return `${title} by ${author}, ${pages} pages, ${read}`
+// function Book(title, author, pages, read, key) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.read = read;
+//     this.key = Math.floor(Math.random() * 100000);
+//     this.info = function() {
+//         return `${title} by ${author}, ${pages} pages, ${read}`
+//     }
+// }
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.key = Math.floor(Math.random() * 100000);
+    }
+    get info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`
     }
 }
 
